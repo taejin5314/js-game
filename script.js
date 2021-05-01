@@ -7,6 +7,8 @@ const images = {};
 images.player = new Image();
 images.player.src = 'Character.png';
 const characterActions = ['up', 'top right', 'right', 'down right', 'down', 'jump'];
+const characters = [];
+characters.push(new Character());
 
 class Character {
   constructor() {
