@@ -19,17 +19,28 @@ class Character {
     this.x = 0;
     this.y = 0;
     this.speed = (Math.random() * 1.5) + 3.5;
-
+    this.action = 'right';
+  }
+  draw() {
+    drawSprite(images.player, this.width * this.frameX, this.height * this.frameY, this.width, this.height, this.y, this.x, this.width, this.height);
+    if (this.frameX < 13) this.frameX++;
+    else this.frameX = 3;
+  }
+  update() {
+    if (this.action === 'right') {
+      if (this.x < canvas.width + this.width) this.x += this.speed;
+      else this.x = 0 - this.width;
+    }
   }
 }
 
-const playerWidth = 103.0625;
-const playerHeight = 113.125;
-let playerFrameX = 3;
-let playerFrameY = 3;
-let playerX = 0;
-let playerY = 0;
-const playerSpeed = 6;
+// const playerWidth = 103.0625;
+// const playerHeight = 113.125;
+// let playerFrameX = 3;
+// let playerFrameY = 3;
+// let playerX = 0;
+// let playerY = 0;
+// const playerSpeed = 6;
 
 function drawSprite(img, sX, sY, sW, sH, dX, dY, dW, dH) {
   ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH);
@@ -37,11 +48,11 @@ function drawSprite(img, sX, sY, sW, sH, dX, dY, dW, dH) {
 
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  drawSprite(images.player, playerWidth * playerFrameX, playerHeight * playerFrameY, playerWidth, playerHeight, playerX, playerY, playerWidth, playerHeight);
-  if (playerFrameX < 13) playerFrameX++;
-  else playerFrameX = 3;
-  if (playerX < canvas.width + playerWidth) playerX += playerSpeed;
-  else playerX = 0 - playerWidth;
+  // drawSprite(images.player, playerWidth * playerFrameX, playerHeight * playerFrameY, playerWidth, playerHeight, playerX, playerY, playerWidth, playerHeight);
+  // if (playerFrameX < 13) playerFrameX++;
+  // else playerFrameX = 3;
+  // if (playerX < canvas.width + playerWidth) playerX += playerSpeed;
+  // else playerX = 0 - playerWidth;
   // requestAnimationFrame(animate);
 }
 
