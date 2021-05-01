@@ -5,5 +5,13 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: blue;
+  background: url('Brick.png');
+  transform: rotate(1, 0, 1, 50deg);
+}
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
