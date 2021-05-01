@@ -8,7 +8,6 @@ images.player = new Image();
 images.player.src = 'Character.png';
 const characterActions = ['up', 'top right', 'right', 'down right', 'down', 'jump'];
 const characters = [];
-characters.push(new Character());
 
 class Character {
   constructor() {
@@ -22,7 +21,7 @@ class Character {
     this.action = 'right';
   }
   draw() {
-    drawSprite(images.player, this.width * this.frameX, this.height * this.frameY, this.width, this.height, this.y, this.x, this.width, this.height);
+    drawSprite(images.player, this.width * this.frameX, this.height * this.frameY, this.width, this.height, this.x, this.y, this.width, this.height);
     if (this.frameX < 13) this.frameX++;
     else this.frameX = 3;
   }
@@ -33,14 +32,7 @@ class Character {
     }
   }
 }
-
-// const playerWidth = 103.0625;
-// const playerHeight = 113.125;
-// let playerFrameX = 3;
-// let playerFrameY = 3;
-// let playerX = 0;
-// let playerY = 0;
-// const playerSpeed = 6;
+characters.push(new Character());
 
 function drawSprite(img, sX, sY, sW, sH, dX, dY, dW, dH) {
   ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH);
