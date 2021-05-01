@@ -48,12 +48,8 @@ function drawSprite(img, sX, sY, sW, sH, dX, dY, dW, dH) {
 
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  // drawSprite(images.player, playerWidth * playerFrameX, playerHeight * playerFrameY, playerWidth, playerHeight, playerX, playerY, playerWidth, playerHeight);
-  // if (playerFrameX < 13) playerFrameX++;
-  // else playerFrameX = 3;
-  // if (playerX < canvas.width + playerWidth) playerX += playerSpeed;
-  // else playerX = 0 - playerWidth;
-  // requestAnimationFrame(animate);
+  characters[0].draw();
+  characters[0].update();
 }
 
 window.onload = setInterval(animate, 1000 / 30);
