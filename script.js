@@ -27,7 +27,7 @@ class Character {
       this.maxFrame = 15;
     } else if (this.action === 'top right') {
       this.frameY = 1;
-      this.minFrame = 3;
+      this.minFrame = 4;
       this.maxFrame = 14;
     } else if (this.action === 'right') {
       this.frameY = 3;
@@ -95,7 +95,7 @@ function animate() {
   }
 }
 
-window.onload = setInterval(animate, 1000 / 30);
+window.onload = setInterval(animate, 1000 / 25);
 
 window.addEventListener('resize', function () {
   canvas.height = window.innerHeight;
