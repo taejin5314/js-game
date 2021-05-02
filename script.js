@@ -6,8 +6,8 @@ canvas.width = window.innerWidth;
 const images = {};
 images.player = new Image();
 images.player.src = 'Character.png';
-// const characterActions = ['up', 'top right', 'right', 'down right', 'down', 'jump'];
-const characterActions = ['up', 'right', 'jump'];
+const characterActions = ['up', 'top right', 'right', 'down right', 'down', 'jump'];
+// const characterActions = ['up', 'right', 'jump'];
 const numberOfCharacters = 10;
 const characters = [];
 
@@ -23,22 +23,34 @@ class Character {
     this.action = characterActions[Math.floor(Math.random() * characterActions.length)];
     if (this.action === 'up') {
       this.frameY = 0;
+      this.minFrame = 4;
+      this.maxFrame = 15;
     } else if (this.action === 'top right') {
       this.frameY = 1;
+      this.minFrame = 3;
+      this.maxFrame = 14;
     } else if (this.action === 'right') {
       this.frameY = 3;
+      this.minFrame = 3;
+      this.maxFrame = 13;
     } else if (this.action === 'down right') {
       this.frameY = 4;
+      this.minFrame = 4;
+      this.maxFrame = 15;
     } else if (this.action === 'down') {
       this.frameY = 6;
+      this.minFrame = 0;
+      this.maxFrame = 12;
     } else if (this.action === 'jump') {
       this.frameY = 7;
+      this.minFrame = 0;
+      this.maxFrame = 9;
     }
   }
   draw() {
     drawSprite(images.player, this.width * this.frameX, this.height * this.frameY, this.width, this.height, this.x, this.y, this.width, this.height);
-    if (this.frameX < 13) this.frameX++;
-    else this.frameX = 3;
+    if (this.frameX < this.maxFrame) this.frameX++;
+    else this.frameX = this.minFrame;
   }
   update() {
     if (this.action === 'right') {
@@ -55,6 +67,14 @@ class Character {
         this.x = Math.random() * canvas.width;
       } else {
         this.y -= this.speed;
+      }
+    } else if (this.action === 'down right') {
+      if (this.y > (canvas.height + this.height) && this.x > this.width + canvas.width) {
+        this.y = 0 - this.height;
+        this.x = Math.random() * canvas.width;
+      } else {
+        this.y += this.speed;
+        this.x += this.speed;
       }
     }
   }
