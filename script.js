@@ -17,8 +17,8 @@ class Character {
     this.height = 113.125;
     this.frameX = 3;
     this.frameY = 3;
-    this.x = 0;
-    this.y = 0;
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
     this.speed = (Math.random() * 1.5) + 3.5;
     this.action = characterActions[Math.floor(Math.random() * characterActions.length)];
     if (this.action === 'up') {
