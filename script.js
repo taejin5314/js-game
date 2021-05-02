@@ -8,6 +8,7 @@ images.player = new Image();
 images.player.src = 'Character.png';
 // const characterActions = ['up', 'top right', 'right', 'down right', 'down', 'jump'];
 const characterActions = ['up', 'right'];
+const numberOfCharacters = 10;
 const characters = [];
 
 class Character {
@@ -45,7 +46,9 @@ class Character {
     }
   }
 }
-characters.push(new Character());
+for (let i = 0; i < numberOfCharacters; i++) {
+  characters.push(new Character());
+}
 
 function drawSprite(img, sX, sY, sW, sH, dX, dY, dW, dH) {
   ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH);
@@ -53,8 +56,10 @@ function drawSprite(img, sX, sY, sW, sH, dX, dY, dW, dH) {
 
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  characters[0].draw();
-  characters[0].update();
+  for (i = 0; i < numberOfCharacters; i++) {
+    characters[i].draw();
+    characters[i].update();
+  }
 }
 
 window.onload = setInterval(animate, 1000 / 30);
