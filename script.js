@@ -7,7 +7,7 @@ const images = {};
 images.player = new Image();
 images.player.src = 'Character.png';
 // const characterActions = ['up', 'top right', 'right', 'down right', 'down', 'jump'];
-const characterActions = ['up', 'right'];
+const characterActions = ['up', 'right', 'jump'];
 const numberOfCharacters = 10;
 const characters = [];
 
@@ -21,6 +21,19 @@ class Character {
     this.y = 0;
     this.speed = (Math.random() * 1.5) + 3.5;
     this.action = characterActions[Math.floor(Math.random() * characterActions.length)];
+    if (this.action === 'up') {
+      this.frameY = 0;
+    } else if (this.action === 'top right') {
+      this.frameY = 1;
+    } else if (this.action === 'right') {
+      this.frameY = 3;
+    } else if (this.action === 'down right') {
+      this.frameY = 4;
+    } else if (this.action === 'down') {
+      this.frameY = 6;
+    } else if (this.action === 'jump') {
+      this.frameY = 7;
+    }
   }
   draw() {
     drawSprite(images.player, this.width * this.frameX, this.height * this.frameY, this.width, this.height, this.x, this.y, this.width, this.height);
