@@ -7,12 +7,12 @@ const images = {};
 images.player = new Image();
 images.player.src = 'Character.png';
 const characterActions = ['up', 'top right', 'right', 'down right', 'down', 'jump'];
-const numberOfCharacters = 10;
+const numberOfCharacters = 25;
 const characters = [];
 
 class Character {
   constructor() {
-    this.width = 103;
+    this.width = 103.0625;
     this.height = 113;
     this.frameX = 3;
     this.frameY = 3;
@@ -84,7 +84,11 @@ class Character {
         this.x += this.speed;
       }
     } else if (this.action === 'down') {
-
+      if (this.y > canvas.height + this.height) {
+        this.y = 0 - this.height;
+      } else {
+        this.y += this.speed;
+      }
     }
   }
 }
