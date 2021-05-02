@@ -7,7 +7,7 @@ const images = {};
 images.player = new Image();
 images.player.src = 'Character.png';
 // const characterActions = ['up', 'top right', 'right', 'down right', 'down', 'jump'];
-const characterActions = ['up', 'top right', 'right'];
+const characterActions = ['up', 'right'];
 const characters = [];
 
 class Character {
@@ -28,10 +28,19 @@ class Character {
   }
   update() {
     if (this.action === 'right') {
-      if (this.x < canvas.width + this.width) this.x += this.speed;
-      else {
+      if (this.x > canvas.width + this.width) {
         this.x = 0 - this.width;
         this.y = Math.random() * canvas.height - this.height;
+      }
+      else {
+        this.x += this.speed;
+      }
+    } else if (this.action === 'up') {
+      if (this.y < 0 - this.height) {
+        this.y = canvas.height + this.height;
+        this.x = Math.random() * canvas.width;
+      } else {
+        this.y -= this.speed;
       }
     }
   }
